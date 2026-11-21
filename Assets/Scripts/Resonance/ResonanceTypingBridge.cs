@@ -8,8 +8,7 @@ namespace Encumbrance.Resonance
     {
         [SerializeField] private TypingController typingController;
         [SerializeField] private ResonanceController resonance;
-        [SerializeField, Min(0f)] private float baseMistakePenalty = 5f;
-        [SerializeField, Min(0f)] private float prototypeWeightMultiplier = 1f;
+        [SerializeField] private HazardController hazard;
 
         private void OnEnable()
         {
@@ -31,14 +30,14 @@ namespace Encumbrance.Resonance
 
         private void Start()
         {
-            if (typingController == null || resonance == null)
+            if (typingController == null || resonance == null || hazard == null)
                 Debug.LogError("ResonanceTypingBridge: assign Typing Controller and Resonance references.", this);
         }
 
         private void OnMistake(char expected, char received)
         {
-            if (resonance != null)
-                resonance.ApplyLoss(baseMistakePenalty * prototypeWeightMultiplier);
+            if (resonance != null && hazard!= null)
+                resonance.ApplyLoss(hazard.GetMistakePenalty());
         }
 
         private void OnTypingStarted()
