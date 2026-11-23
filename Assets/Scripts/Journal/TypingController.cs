@@ -22,6 +22,7 @@ namespace Encumbrance.Journal
         public bool IsChapterCompleted { get; private set; }
         public bool IsReady { get; private set; }
 
+        private bool inputEnabled = true;
         private bool isActiveTyping;
         private float lastInputTime;
 
@@ -29,6 +30,7 @@ namespace Encumbrance.Journal
 
         public void BeginChapter()
         {
+            inputEnabled = true;
             IsReady = false;
             IsChapterCompleted = false;
             isActiveTyping = false;
@@ -53,9 +55,21 @@ namespace Encumbrance.Journal
             LoadSentence();
         }
 
+        public void SetInputEnabled(bool enabled)
+        {
+            if (inputEnabled == enabled) return;
+
+            inputEnabled = enabled;
+            if (!enabled && isActiveTyping)
+            {
+                isActiveTyping = false;
+                TypingBecameIdle?.Invoke();
+            }
+        }
+
         public void ReceiveCharacter(char input)
         {
-            if (!IsReady || IsChapterCompleted || char.IsControl(input)) return;
+            if (!inputEnabled || !IsReady || IsChapterCompleted || char.IsControl(input)) return;
             if (!isActiveTyping)
             {
                 isActiveTyping = true;
@@ -102,7 +116,7 @@ namespace Encumbrance.Journal
 
         private void Update()
         {
-            if (IsReady && isActiveTyping && Time.unscaledTime - lastInputTime >= idleThresholdSeconds)
+            if (inputEnabled && IsReady && isActiveTyping && Time.unscaledTime - lastInputTime >= idleThresholdSeconds)
             {
                 isActiveTyping = false;
                 TypingBecameIdle?.Invoke();
