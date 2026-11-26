@@ -469,6 +469,7 @@ MonoBehaviour:
   untypedColor:
     serializedVersion: 2
     rgba: 4289045925
+  blinkInterval: 0.5
 --- !u!114 &158872608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,8 +669,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2059,8 +2060,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 46
+  m_fontSizeBase: 46
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2187,6 +2188,63 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1280, y: 720, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &950014555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 950014557}
+  - component: {fileID: 950014556}
+  m_Layer: 0
+  m_Name: GameplayMusicSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &950014556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950014555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ae51a11f68abf4098c4b851ed3267c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Encumbrance.Audio.GameplayMusicController
+  typing: {fileID: 614299850}
+  resonance: {fileID: 938284196}
+  weather: {fileID: 2021226920}
+  stop: {fileID: 0}
+  beginningMusic: {fileID: 0}
+  conflictMusic: {fileID: 0}
+  resolutionEndingMusic: {fileID: 0}
+  clearAfter: 3
+  beginningVolume: 0.25
+  conflictVolume: 0.2
+  resolutionVolume: 0.35
+  endingVolume: 0.5
+  crossfadeSeconds: 2
+--- !u!4 &950014557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950014555}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3782,7 +3840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.64705884}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4051,6 +4109,7 @@ MonoBehaviour:
   loseMessageDuration: 1
   fadeDuration: 0.75
   blackScreenDuration: 1
+  endingSequence: {fileID: 0}
   winMessage: 
   fadeOnWin: 0
   winMessageDuration: 1.5
@@ -4436,3 +4495,4 @@ SceneRoots:
   - {fileID: 314188711}
   - {fileID: 1489095445}
   - {fileID: 1882106466}
+  - {fileID: 950014557}

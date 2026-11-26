@@ -27,6 +27,9 @@ namespace Encumbrance.Flow
         [SerializeField, Min(0f)] private float fadeDuration = 0.75f;
         [SerializeField, Min(0f)] private float blackScreenDuration = 0.5f;
 
+        [Header("Narrative ending (optional)")]
+        [SerializeField] private EndingSequenceController endingSequence;
+
         [Header("Win")]
         [SerializeField] private string winMessage = "Stop reached.";
         [SerializeField] private bool fadeOnWin = false;
@@ -83,6 +86,7 @@ namespace Encumbrance.Flow
             if (finished) return;
             finished = true;
             StopGameplay();
+            if (endingSequence != null && endingSequence.TryPlay()) return;
             ShowMessage(winMessage);
             if (fadeOnWin || !string.IsNullOrWhiteSpace(nextSceneName))
                 sequence = StartCoroutine(WinSequence());
