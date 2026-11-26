@@ -2088,7 +2088,7 @@ MonoBehaviour:
   weather: {fileID: 171120987}
   fogRect: {fileID: 1658203157}
   fogGroup: {fileID: 1658203158}
-  fogAfter: 51
+  fogAfter: 52
   smoothingSeconds: 0.5
   startOpacity: 0.15
   endOpacity: 0.6
@@ -2774,7 +2774,7 @@ MonoBehaviour:
   resonance: {fileID: 143731740}
   stop: {fileID: 1443871244}
   rainAfter: 30
-  clearAfter: 51
+  clearAfter: 52
   tintRoots:
   - {fileID: 279247203}
   - {fileID: 820797675}
@@ -3995,7 +3995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204067355a67bcb4a87d22d206a97a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Encumbrance.Stop.StopController
-  stopAfterCompletedSentences: 51
+  stopAfterCompletedSentences: 52
   typing: {fileID: 611678535}
   resonance: {fileID: 143731740}
   worldScroller: {fileID: 560753525}
@@ -6847,6 +6847,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &2120378821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2120378822}
+  - component: {fileID: 2120378823}
+  m_Layer: 0
+  m_Name: Secret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2120378822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120378821}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.7565, y: 0.00149, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2120378823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120378821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f0f49c943b4d84db8ac874bab9494d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Encumbrance.Secret.Secret
+  resonance: {fileID: 143731740}
 --- !u!1 &2130069951
 GameObject:
   m_ObjectHideFlags: 0
@@ -7113,5 +7158,6 @@ SceneRoots:
   - {fileID: 599429424}
   - {fileID: 1369595579}
   - {fileID: 143731741}
+  - {fileID: 2120378822}
   - {fileID: 374311916}
   - {fileID: 118414688}
