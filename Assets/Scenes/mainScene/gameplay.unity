@@ -1132,8 +1132,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283782485
-  m_fontColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
+    rgba: 4290822336
+  m_fontColor: {r: 0.7529412, g: 0.7529412, b: 0.7529412, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2295,6 +2295,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656833952}
   m_CullTransparentMesh: 1
+--- !u!1 &670902316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 670902317}
+  - component: {fileID: 670902319}
+  - component: {fileID: 670902318}
+  m_Layer: 5
+  m_Name: EndingSlideshow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &670902317
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670902316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1934766773}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &670902318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670902316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 4ae92d0ecf62b09419f25ed2a72b4e57, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &670902319
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670902316}
+  m_CullTransparentMesh: 1
 --- !u!1 &679702015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2980,11 +3055,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.33333334, g: 0.33333334, b: 0.33333334, a: 1}
-    m_HighlightedColor: {r: 0.13333334, g: 0.13333334, b: 0.13333334, a: 1}
-    m_PressedColor: {r: 0.53333336, g: 0.53333336, b: 0.53333336, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.7529412, g: 0.7529412, b: 0.7529412, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3010,7 +3085,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037483689}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -4340,15 +4415,30 @@ MonoBehaviour:
   endingGroup: {fileID: 1934766774}
   endingText: {fileID: 1923234079}
   menuButton: {fileID: 1037483691}
-  endingLines:
-  - The weight was still there
-  - Yet the journey no longer felt the same
-  - Perhaps I had learned how to carry it
-  finalTitle: ENCUMBRANCE
+  endingLines: []
+  finalTitle: 'PROJECT: ENCUMBRANCE'
   screenFadeSeconds: 2
   textFadeSeconds: 0.8
   readingSeconds: 4
   mainMenuSceneName: mainMenu
+  slideshowImage: {fileID: 670902318}
+  slideshowFrames:
+  - {fileID: 21300000, guid: 4ae92d0ecf62b09419f25ed2a72b4e57, type: 3}
+  - {fileID: 21300000, guid: 2b0cee6d891e2664696bd86d6ae8caf5, type: 3}
+  - {fileID: 21300000, guid: 119d1315636c4cd4bb52e0c96a6c7e12, type: 3}
+  - {fileID: 21300000, guid: e1fe398d116395e4db3ecbaf176609a7, type: 3}
+  - {fileID: 21300000, guid: f9b8a97737f33924fb6c8d24dade9e1b, type: 3}
+  - {fileID: 21300000, guid: d3ee540b3512179449767b99c8013fb1, type: 3}
+  - {fileID: 21300000, guid: fb1069ffd739dcd4da8aad290c285f61, type: 3}
+  - {fileID: 21300000, guid: 18640e1d915b3d949bb06855d1f4317b, type: 3}
+  - {fileID: 21300000, guid: 2e38695805401d442a31e390fd623426, type: 3}
+  - {fileID: 21300000, guid: 585de3827d78cc4418921b8afcf16cbc, type: 3}
+  - {fileID: 21300000, guid: cf4e022449950244a83efaa3fb7a16a1, type: 3}
+  - {fileID: 21300000, guid: 34029ef4a64bec64f9414f3fd7487618, type: 3}
+  - {fileID: 21300000, guid: a1ee58d7539eabb4f9fc72392e128d71, type: 3}
+  - {fileID: 21300000, guid: 53c13defba316274fb892a3776fc897b, type: 3}
+  secondsPerSlide: 1.5
+  slideshowFadeSeconds: 0.4
 --- !u!4 &1593628530
 Transform:
   m_ObjectHideFlags: 0
@@ -5693,6 +5783,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 670902317}
   - {fileID: 1923234078}
   - {fileID: 1037483690}
   m_Father: {fileID: 2101809907}

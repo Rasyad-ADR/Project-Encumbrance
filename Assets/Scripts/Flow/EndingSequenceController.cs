@@ -21,6 +21,11 @@ namespace Encumbrance.Flow
         [SerializeField, Min(0f)] private float textFadeSeconds = .8f;
         [SerializeField, Min(0f)] private float readingSeconds = 4f;
         [SerializeField] private string mainMenuSceneName = "mainMenu";
+        [Header("Ending Slideshow")]
+        [SerializeField] private Image slideshowImage;
+        [SerializeField] private Sprite[] slideshowFrames;
+        [SerializeField, Min(0f)] private float secondsPerSlide = 1.5f;
+        [SerializeField, Min(0f)] private float slideshowFadeSeconds = 0.4f;
         private bool started, menuReady;
 
         private void Awake()
@@ -32,6 +37,7 @@ namespace Encumbrance.Flow
                 endingGroup.blocksRaycasts = false;
                 endingGroup.gameObject.SetActive(false);
             }
+            if (slideshowImage != null) slideshowImage.gameObject.SetActive(false);
             if (menuButton != null) menuButton.gameObject.SetActive(false);
         }
         private void OnEnable() { if (menuButton != null) menuButton.onClick.AddListener(ReturnToMenu); }
@@ -58,6 +64,7 @@ namespace Encumbrance.Flow
             endingGroup.alpha = 0f;
             endingGroup.gameObject.SetActive(true);
             yield return Fade(0f, 1f, screenFadeSeconds, v => endingGroup.alpha = v);
+            yield return PlaySlideshow();
             if (endingLines != null)
             {
                 foreach (string line in endingLines)
@@ -75,6 +82,34 @@ namespace Encumbrance.Flow
             menuButton.interactable = true;
             endingGroup.interactable = true;
             menuReady = true;
+        }
+        private IEnumerator PlaySlideshow()
+        {
+            if (slideshowImage == null || slideshowFrames == null || slideshowFrames.Length == 0)
+                yield break;
+
+            bool first = true;
+            slideshowImage.raycastTarget = false;
+            foreach (Sprite frame in slideshowFrames)
+            {
+                if (frame == null) continue;
+                slideshowImage.sprite = frame;
+                if (first)
+                {
+                    slideshowImage.color = new Color(1f, 1f, 1f, 0f);
+                    slideshowImage.gameObject.SetActive(true);
+                    yield return Fade(0f, 1f, slideshowFadeSeconds,
+                        v => slideshowImage.color = new Color(1f, 1f, 1f, v));
+                    first = false;
+                }
+                yield return new WaitForSecondsRealtime(secondsPerSlide);
+            }
+            if (!first)
+            {
+                yield return Fade(1f, 0f, slideshowFadeSeconds,
+                    v => slideshowImage.color = new Color(1f, 1f, 1f, v));
+                slideshowImage.gameObject.SetActive(false);
+            }
         }
         private void ReturnToMenu()
         {
