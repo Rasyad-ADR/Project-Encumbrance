@@ -636,7 +636,9 @@ MonoBehaviour:
   startText: {fileID: 1814834099}
   startButton: {fileID: 411693485}
   firstNarrative: The Exile, resting beside his burden, is surprised to find what seems to be a journal and notebook.
-  restartNarrative: HIs journal is broken, but his will never did.
+  restartNarrative: 'Yet he persisted.
+
+    The ascent must continue once more.'
   textFadeSeconds: 1
   screenFadeSeconds: 1.5
 --- !u!1 &200833118
@@ -1729,7 +1731,9 @@ MonoBehaviour:
   gameOverGroup: {fileID: 940348192}
   messageText: {fileID: 1381539630}
   restartButton: {fileID: 1901124517}
-  message: My voice faded, and the climb ended here.
+  message: 'His focus fades. His footing wavers.
+
+    Along with his voice, his pages scatter claimed by the wind.'
   fadeSeconds: 1.5
   fadeOverlay: {fileID: 255631443}
   restartFadeSeconds: 1
