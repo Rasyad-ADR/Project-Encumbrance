@@ -722,7 +722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6e086b18aa1f947a94d5291b18a89f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Encumbrance.Weather.WeatherController
-  weather: 0
+  weather: 1
   rainHazard: {fileID: 2029386148}
   resonance: {fileID: 882354973}
 --- !u!4 &327740242
@@ -2319,6 +2319,7 @@ MonoBehaviour:
   untypedColor:
     serializedVersion: 2
     rgba: 4289045925
+  blinkInterval: 0.5
 --- !u!114 &1176180108
 MonoBehaviour:
   m_ObjectHideFlags: 0
