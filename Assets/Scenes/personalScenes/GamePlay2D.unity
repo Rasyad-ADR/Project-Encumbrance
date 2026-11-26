@@ -674,7 +674,7 @@ MonoBehaviour:
   weather: {fileID: 2021226920}
   fogRect: {fileID: 93287535}
   fogGroup: {fileID: 93287538}
-  fogAfter: 100
+  fogAfter: 51
   smoothingSeconds: 0.5
   startOpacity: 0.15
   endOpacity: 0.6
@@ -1766,8 +1766,8 @@ MonoBehaviour:
   weather: {fileID: 2021226920}
   resonance: {fileID: 938284196}
   stop: {fileID: 1829936277}
-  rainAfter: 100
-  clearAfter: 101
+  rainAfter: 30
+  clearAfter: 51
   tintRoots:
   - {fileID: 1205557802}
   - {fileID: 1664785290}
@@ -2319,9 +2319,12 @@ MonoBehaviour:
   fadeInSeconds: 1
   fadeOutSeconds: 1
   narrations:
-  - afterSentences: 12
+  - afterSentences: 8
     text: A pause, he is almost amused.
-    holdSeconds: 1
+    holdSeconds: 3
+  - afterSentences: 31
+    text: ...
+    holdSeconds: 3
 --- !u!4 &719223372
 Transform:
   m_ObjectHideFlags: 0
@@ -5909,7 +5912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204067355a67bcb4a87d22d206a97a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Encumbrance.Stop.StopController
-  stopAfterCompletedSentences: 16
+  stopAfterCompletedSentences: 51
   typing: {fileID: 614299850}
   resonance: {fileID: 938284196}
   worldScroller: {fileID: 314188710}
@@ -5924,7 +5927,7 @@ MonoBehaviour:
   resonanceReadout: {fileID: 0}
   cutsceneGroup: {fileID: 26804191}
   cutsceneText: {fileID: 1573913372}
-  narrative: For a moment, I allowed myself to rest.
+  narrative: For a moment, he allowed himself to rest.
   screenFadeSeconds: 1.5
   textFadeSeconds: 1
   worldRoot: {fileID: 0}
