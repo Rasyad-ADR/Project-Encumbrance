@@ -12,6 +12,7 @@ namespace Encumbrance.Audio
         [SerializeField] private ResonanceController resonance;
         [SerializeField] private WeatherController weather;
         [Header("Clips")]
+        [SerializeField] private AudioClip calmAmbience;
         [SerializeField] private AudioClip heavyRain;
         [SerializeField] private AudioClip storm;
         [SerializeField] private AudioClip distantThunder;
@@ -20,6 +21,7 @@ namespace Encumbrance.Audio
         [SerializeField] private AudioClip[] pageFlips;
         [SerializeField] private AudioClip pagesFlyingAway;
         [Header("Mix")]
+        [SerializeField, Range(0,1)] private float calmVolume = .25f;
         [SerializeField, Range(0,1)] private float rainVolume = .35f;
         [SerializeField, Range(0,1)] private float stormVolume = .45f;
         [SerializeField, Range(0,1)] private float writingVolume = .25f;
@@ -32,13 +34,14 @@ namespace Encumbrance.Audio
         [SerializeField, Min(0)] private float activityHoldSeconds = .45f;
         [SerializeField, Min(1)] private float minThunderInterval = 20f;
         [SerializeField, Min(1)] private float maxThunderInterval = 35f;
-        private AudioSource rainSource, stormSource, writingSource, stoneSource, pageSource, loseSource, thunderSource;
+        private AudioSource calmSource, rainSource, stormSource, writingSource, stoneSource, pageSource, loseSource, thunderSource;
         private float writingUntil = -1, stoneUntil = -1, thunderTimer;
         private WeatherMode previousWeather;
         private bool Active => resonance != null && resonance.IsAscentActive;
 
         private void Awake()
         {
+            calmSource = CreateSource("Calm", calmAmbience, true);
             rainSource = CreateSource("Rain", heavyRain, true);
             stormSource = CreateSource("Storm", storm, true);
             writingSource = CreateSource("Writing", fillJournal, true);
@@ -79,7 +82,7 @@ namespace Encumbrance.Audio
                 typing.SentenceCompleted -= OnSentence;
             }
             if (resonance != null) resonance.Depleted -= OnLose;
-            foreach (var source in new[]{rainSource,stormSource,writingSource,stoneSource,pageSource,loseSource,thunderSource})
+            foreach (var source in new[]{calmSource,rainSource,stormSource,writingSource,stoneSource,pageSource,loseSource,thunderSource})
                 if (source != null) { source.Stop(); if (source.loop) source.volume = 0; }
             writingUntil = stoneUntil = -1;
             previousWeather = WeatherMode.Dry;
@@ -114,6 +117,7 @@ namespace Encumbrance.Audio
         {
             var mode = Active && weather != null ? weather.EffectiveWeather : WeatherMode.Dry;
             float dt = Time.unscaledDeltaTime;
+            Fade(calmSource, Active && mode == WeatherMode.Dry ? calmVolume : 0, ambienceFadeSeconds, dt);
             Fade(rainSource, mode == WeatherMode.HeavyRain ? rainVolume : 0, ambienceFadeSeconds, dt);
             Fade(stormSource, mode == WeatherMode.Storm ? stormVolume : 0, ambienceFadeSeconds, dt);
             bool activity = Active && Time.timeScale > 0;

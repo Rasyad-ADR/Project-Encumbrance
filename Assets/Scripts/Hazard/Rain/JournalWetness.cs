@@ -9,6 +9,7 @@ namespace Encumbrance.Hazard
     {
         [SerializeField] private ResonanceController resonance;
         [SerializeField] private TMP_Text wetnessText;
+        [SerializeField] private Image wetnessFill;
         [SerializeField] private Image wetOverlay;
         [SerializeField, Range(0, 1)] private float maxOverlayAlpha = 0.65f;
         [SerializeField, Min(0)] private float missedPenalty = 15f;
@@ -17,6 +18,7 @@ namespace Encumbrance.Hazard
         public float Current { get; private set; }
         public float Normalized => Current / 100f;
         private void Awake() => Refresh();
+        public void ResetWetness() { Current = 0f; Refresh(); }
         public void Missed() => Change(missedPenalty);
         public void Wiped() => Change(-wipeRecovery);
         private void Change(float amount)
@@ -31,6 +33,7 @@ namespace Encumbrance.Hazard
         }
         private void Refresh()
         {
+            if (wetnessFill != null) wetnessFill.fillAmount = Normalized;
             if (wetnessText != null) wetnessText.text = $"Wetness: {Current:0}%";
             if (wetOverlay != null)
             {
