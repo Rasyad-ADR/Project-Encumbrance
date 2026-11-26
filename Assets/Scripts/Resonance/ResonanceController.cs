@@ -24,6 +24,7 @@ namespace Encumbrance.Resonance
         public float Normalized => maximum > 0f ? Current / maximum : 0f;
         public bool IsAscentActive { get; private set; }
         public bool IsTypingIdle { get; private set; } = true;
+        public bool Immortal { get; set; }
 
         private bool depletedNotified;
 
@@ -44,6 +45,7 @@ namespace Encumbrance.Resonance
 
         public void ApplyLoss(float amount)
         {
+            if (Immortal) return;   // <-- tambahan
             if (!IsAscentActive || Current <= 0f || amount <= 0f || float.IsNaN(amount)) return;
             float old = Current;
             Current = Mathf.Max(0f, Current - amount);
