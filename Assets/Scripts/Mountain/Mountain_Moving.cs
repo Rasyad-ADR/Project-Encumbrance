@@ -30,6 +30,8 @@ public class Mountain_Moving : MonoBehaviour
             sprites.Add(sprite);
         }
 
+        public void ClearPending() => pending = 0f;
+
         public void OnTyped()
         {
             pending += leftPerCharacter;
@@ -66,6 +68,18 @@ public class Mountain_Moving : MonoBehaviour
     public Layer farMountain;
     public Layer midMountain;
 
+    private bool movementEnabled = true;
+
+    public void SetMovementEnabled(bool value)
+    {
+        movementEnabled = value;
+        if (!value)
+        {
+            farMountain?.ClearPending();
+            midMountain?.ClearPending();
+        }
+    }
+
     void OnEnable()
     {
         if (typing != null) typing.CharacterTyped += OnCharacterTyped;
@@ -78,6 +92,7 @@ public class Mountain_Moving : MonoBehaviour
 
     void OnCharacterTyped(char c)
     {
+        if (!movementEnabled) return;
         farMountain.OnTyped();
         midMountain.OnTyped();
     }
@@ -90,6 +105,7 @@ public class Mountain_Moving : MonoBehaviour
 
     void Update()
     {
+        if (!movementEnabled) return;
         farMountain.Tick(smoothSpeed);
         midMountain.Tick(smoothSpeed);
     }

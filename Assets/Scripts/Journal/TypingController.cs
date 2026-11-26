@@ -21,6 +21,7 @@ namespace Encumbrance.Journal
         public int CurrentSentenceIndex { get; private set; }
         public bool IsChapterCompleted { get; private set; }
         public bool IsReady { get; private set; }
+        public int TotalSentenceCount => chapter != null && chapter.sentences != null ? chapter.sentences.Count : 0;
 
         private bool inputEnabled = true;
         private bool isActiveTyping;

@@ -20,6 +20,16 @@ public class Terrain_Moving : MonoBehaviour
     bool nextIsA = true;
     Vector2 pending;   // distance still left to move
 
+    private bool movementEnabled = true;
+    public Transform MovementTransform => terrain;
+    public bool MovementEnabled => movementEnabled && isActiveAndEnabled;
+
+    public void SetMovementEnabled(bool value)
+    {
+        movementEnabled = value;
+        if (!value) pending = Vector2.zero;
+    }
+
     void OnEnable()
     {
         if (typing != null) typing.CharacterTyped += OnCharacterTyped;
@@ -32,6 +42,7 @@ public class Terrain_Moving : MonoBehaviour
 
     void OnCharacterTyped(char c)
     {
+        if (!movementEnabled) return;
         pending += new Vector2(leftPerCharacter, downPerCharacter);
     }
 
@@ -54,6 +65,7 @@ public class Terrain_Moving : MonoBehaviour
 
     void Update()
     {
+        if (!movementEnabled) return;
         if (pending != Vector2.zero)
         {
             Vector2 delta = Vector2.MoveTowards(Vector2.zero, pending, smoothSpeed * Time.deltaTime);

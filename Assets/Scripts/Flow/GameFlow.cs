@@ -14,6 +14,8 @@ namespace Encumbrance.Flow
         [SerializeField] private TypingController typingController;
         [SerializeField] private ResonanceController resonanceController;
         [SerializeField] private WorldScroller worldScroller;
+        [SerializeField] private Terrain_Moving terrainMovement;
+        [SerializeField] private Mountain_Moving mountainMovement;
 
         [Header("UI")]
         [SerializeField] private CanvasGroup fadeOverlay;
@@ -38,7 +40,7 @@ namespace Encumbrance.Flow
         {
             if (typingController == null) Debug.LogError("GameFlow: assign TypingController.", this);
             if (resonanceController == null) Debug.LogError("GameFlow: assign ResonanceController.", this);
-            if (worldScroller == null) Debug.LogError("GameFlow: assign WorldScroller.", this);
+            if (terrainMovement == null && worldScroller == null) Debug.LogError("GameFlow: assign terrain movement or WorldScroller.", this);
             if (fadeOverlay == null) Debug.LogError("GameFlow: assign FadeOverlay CanvasGroup.", this);
             if (messageText == null) Debug.LogError("GameFlow: assign MessageText TMP_Text.", this);
             if (fadeOverlay != null)
@@ -89,7 +91,9 @@ namespace Encumbrance.Flow
         private void StopGameplay()
         {
             if (typingController != null) typingController.SetInputEnabled(false);
-            if (worldScroller != null) worldScroller.SetScrollEnabled(false);
+            if (terrainMovement != null) terrainMovement.SetMovementEnabled(false);
+            else if (worldScroller != null) worldScroller.SetScrollEnabled(false);
+            if (mountainMovement != null) mountainMovement.SetMovementEnabled(false);
             if (resonanceController != null) resonanceController.EndAscent();
         }
 
