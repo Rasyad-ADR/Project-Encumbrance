@@ -13,13 +13,25 @@ public class mainMenu : MonoBehaviour
     [Header("References")]
     public SettingsMenu settingsMenu;
     public AudioSource sfxSource;
+    public AudioSource bgmSource;
+    public Image fadeOverlay;
 
     [Header("Scene Settings")]
-    public string gameSceneName = "mainScene";
-    public float transitionDelay = 0.5f;
+    public string gameSceneName = "gameplay";
+    public float transitionDelay = 1.0f;
+
+    private bool isTransitioning = false;
 
     private void Start()
     {
+        if (fadeOverlay != null)
+        {
+            Color c = fadeOverlay.color;
+            c.a = 0f;
+            fadeOverlay.color = c;
+            fadeOverlay.raycastTarget = false;
+        }
+
         if (startButton != null)
         {
             startButton.onClick.RemoveAllListeners();
@@ -49,12 +61,15 @@ public class mainMenu : MonoBehaviour
 
     public void OnStartClicked()
     {
-        StartCoroutine(PlayAndLoadScene());
+        if (!isTransitioning)
+        {
+            StartCoroutine(PlayAndLoadScene());
+        }
     }
 
     public void OnSettingsClicked()
     {
-        if (settingsMenu != null)
+        if (!isTransitioning && settingsMenu != null)
         {
             settingsMenu.OpenSettings();
         }
@@ -62,21 +77,62 @@ public class mainMenu : MonoBehaviour
 
     public void OnQuitClicked()
     {
-        StartCoroutine(PlayAndQuit());
+        if (!isTransitioning)
+        {
+            StartCoroutine(PlayAndQuit());
+        }
     }
 
     private IEnumerator PlayAndLoadScene()
     {
+        isTransitioning = true;
         PlayClickSound();
-        yield return new WaitForSeconds(transitionDelay);
+
+        if (fadeOverlay != null)
+        {
+            fadeOverlay.raycastTarget = true; 
+        }
+
+        float startVolume = bgmSource != null ? bgmSource.volume : 0f;
+        float elapsed = 0f;
+
+        while (elapsed < transitionDelay)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float progress = Mathf.Clamp01(elapsed / transitionDelay);
+
+            if (bgmSource != null)
+            {
+                bgmSource.volume = Mathf.Lerp(startVolume, 0f, progress);
+            }
+
+            if (fadeOverlay != null)
+            {
+                Color c = fadeOverlay.color;
+                c.a = progress;
+                fadeOverlay.color = c;
+            }
+
+            yield return null;
+        }
+
+        if (bgmSource != null) bgmSource.volume = 0f;
+        if (fadeOverlay != null)
+        {
+            Color c = fadeOverlay.color;
+            c.a = 1f;
+            fadeOverlay.color = c;
+        }
+
         Time.timeScale = 1f;
         SceneManager.LoadScene(gameSceneName);
     }
 
     private IEnumerator PlayAndQuit()
     {
+        isTransitioning = true;
         PlayClickSound();
-        yield return new WaitForSeconds(transitionDelay);
+        yield return new WaitForSecondsRealtime(transitionDelay);
         Application.Quit();
         Debug.Log("Game Quit!");
     }
