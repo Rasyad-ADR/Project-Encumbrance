@@ -2671,9 +2671,9 @@ MonoBehaviour:
   resonance: {fileID: 938284196}
   weather: {fileID: 2021226920}
   stop: {fileID: 1829936277}
-  beginningMusic: {fileID: 0}
-  conflictMusic: {fileID: 0}
-  resolutionEndingMusic: {fileID: 0}
+  beginningMusic: {fileID: 8300000, guid: 3124d7389670e6c48a02c776252c2d03, type: 3}
+  conflictMusic: {fileID: 8300000, guid: 813b614156973ce47a1a7688f08c93fb, type: 3}
+  resolutionEndingMusic: {fileID: 8300000, guid: 66e2e494b7ac0b74a9c0dc72a4c7d615, type: 3}
   clearAfter: 3
   beginningVolume: 0.25
   conflictVolume: 0.2
@@ -3194,7 +3194,7 @@ MonoBehaviour:
   typing: {fileID: 614299850}
   resonance: {fileID: 938284196}
   weather: {fileID: 2021226920}
-  calmAmbience: {fileID: 0}
+  calmAmbience: {fileID: 8300000, guid: 3aa2a510f468dc54d93eb188d9a884ae, type: 3}
   heavyRain: {fileID: 8300000, guid: 30cf6404749e26448b1c3eed54e1a224, type: 3}
   storm: {fileID: 8300000, guid: 9a1dd8bae7126684cafb9a2eacac080c, type: 3}
   distantThunder: {fileID: 8300000, guid: 34bb75214a398844d8d4b1dd6e12eb27, type: 3}
@@ -3926,10 +3926,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b2cd9c16c6465264199e0da001306df9, type: 3}
   - {fileID: 21300000, guid: 7ba4da1c4ce71464aaa677bfb614f643, type: 3}
   - {fileID: 21300000, guid: 9fbe47e466e6f5c49a4cd58c220bbb47, type: 3}
-  framesPerSecond: 12
-  movementThreshold: 0.025
+  - {fileID: 21300000, guid: 3441bdc4960413e4f86e81b81354b926, type: 3}
+  - {fileID: 21300000, guid: f93bc50a7a113de41948bb739a1b27c1, type: 3}
+  - {fileID: 21300000, guid: 4c525ade7ccf660408d7746d6b494976, type: 3}
+  - {fileID: 21300000, guid: cb6242f262497fb48a91d183b40b30d0, type: 3}
+  - {fileID: 21300000, guid: 2f8b3a8d3f925ee47be671295a178118, type: 3}
+  - {fileID: 21300000, guid: 0e276d6b2b7554b46ae8b78e581fa582, type: 3}
+  framesPerSecond: 16
+  movementThreshold: 0.01
   idleFrameIndex: 0
-  movementGracePeriod: 0.25
+  movementGracePeriod: 0.5
 --- !u!4 &1287133793
 Transform:
   m_ObjectHideFlags: 0
