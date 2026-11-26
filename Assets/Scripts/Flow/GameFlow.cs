@@ -2,6 +2,7 @@ using System.Collections;
 using Encumbrance.Journal;
 using Encumbrance.Resonance;
 using Encumbrance.World;
+using Encumbrance.Weather;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +16,11 @@ namespace Encumbrance.Flow
         [SerializeField] private WorldScroller worldScroller;
         [SerializeField] private Terrain_Moving terrainMovement;
         [SerializeField] private Mountain_Moving mountainMovement;
+
+        [Header("Ending")]
+        [SerializeField] private EndingSequenceController endingSequence;
+        [SerializeField] private WeatherController weather;
+        private bool endingStarted;
 
         [Header("UI")]
         [SerializeField] private CanvasGroup fadeOverlay;
@@ -31,6 +37,27 @@ namespace Encumbrance.Flow
                 fadeOverlay.blocksRaycasts = false;
             }
             if (messageText != null) messageText.gameObject.SetActive(false);
+        }
+
+        private void OnEnable()
+        {
+            if (typingController != null) typingController.ChapterCompleted += OnChapterCompleted;
+        }
+
+        private void OnDisable()
+        {
+            if (typingController != null) typingController.ChapterCompleted -= OnChapterCompleted;
+        }
+
+        private void OnChapterCompleted()
+        {
+            if (endingStarted || (resonanceController != null && resonanceController.Current <= 0f)) return;
+            endingStarted = true;
+            StopGameplay();
+            if (weather != null) weather.SetDry();
+            if (endingSequence != null && endingSequence.TryPlay()) return;
+            Debug.LogError("GameFlow: ending controller missing or invalid. Check Inspector.", this);
+            ShowMessage("ENCUMBRANCE");
         }
 
         private void StopGameplay()
