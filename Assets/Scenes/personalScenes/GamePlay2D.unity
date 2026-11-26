@@ -2739,7 +2739,7 @@ MonoBehaviour:
   beginningMusic: {fileID: 8300000, guid: 3124d7389670e6c48a02c776252c2d03, type: 3}
   conflictMusic: {fileID: 8300000, guid: 813b614156973ce47a1a7688f08c93fb, type: 3}
   resolutionEndingMusic: {fileID: 8300000, guid: 66e2e494b7ac0b74a9c0dc72a4c7d615, type: 3}
-  clearAfter: 3
+  clearAfter: 51
   beginningVolume: 0.25
   conflictVolume: 0.2
   resolutionVolume: 0.35
